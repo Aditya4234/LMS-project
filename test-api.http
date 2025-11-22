@@ -1,0 +1,81 @@
+### LMS Backend API Tests
+
+@baseUrl = http://localhost:5000
+
+### 1. Health Check
+GET {{baseUrl}}/
+
+### 2. Register User
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "role": "student"
+}
+
+### 3. Login User
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### 4. Get All Courses
+GET {{baseUrl}}/api/courses
+
+### 5. Create Course
+POST {{baseUrl}}/api/courses
+Content-Type: application/json
+
+{
+  "title": "React Mastery",
+  "instructor": "Aditya Gupta",
+  "description": "Learn React from scratch",
+  "duration": "12 Weeks",
+  "price": 2999,
+  "level": "Intermediate",
+  "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+}
+
+### 6. Get Single Course
+GET {{baseUrl}}/api/courses/67041a1b2c3d4e5f6789012
+
+### 7. Get All Students
+GET {{baseUrl}}/api/students
+
+### 8. Create Student
+POST {{baseUrl}}/api/students
+Content-Type: application/json
+
+{
+  "name": "Riya Sharma",
+  "email": "riya@example.com",
+  "phone": "+91 9876543210",
+  "enrolled": "React JS",
+  "status": "Active",
+  "img": "https://i.pravatar.cc/150?img=2"
+}
+
+### 9. Get Single Student
+GET {{baseUrl}}/api/students/67041a1b2c3d4e5f6789012
+
+### 10. Update Course
+PUT {{baseUrl}}/api/courses/67041a1b2c3d4e5f6789012
+Content-Type: application/json
+
+{
+  "title": "React Advanced",
+  "price": 3499
+}
+
+### 11. Delete Course
+DELETE {{baseUrl}}/api/courses/67041a1b2c3d4e5f6789012
+
+### 12. Delete Student
+DELETE {{baseUrl}}/api/students/67041a1b2c3d4e5f6789012
+
