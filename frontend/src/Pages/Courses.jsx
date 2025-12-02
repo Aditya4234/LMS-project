@@ -1,87 +1,118 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Custom design strip for e liye
+// Redesigned modern hero strip for E Liye
 const EliyeStrip = () => (
-  <div className="relative z-0 flex justify-center pb-7 pt-1">
+  <div className="relative flex justify-center pb-10 pt-2">
     <svg
       width="100%"
-      height="55"
-      viewBox="0 0 1300 55"
+      height="80"
+      viewBox="0 0 1200 80"
       fill="none"
-      className="absolute left-0 right-0 top-0"
-      style={{ minWidth: "100vw" }}
       aria-hidden
+      className="absolute left-0 right-0 top-0 w-full"
     >
-      {/* Simple and elegant: wavy line with "E", "L", "I", "Y", "E" letters and bulbs */}
-      <path
-        d="M0 25 Q 300 0 650 27 Q 1000 54 1300 23"
-        stroke="#3493f2"
-        strokeWidth="5"
-        fill="none"
-        opacity="0.08"
+      {/* Smooth background blob for visual depth */}
+      <ellipse
+        cx="600"
+        cy="40"
+        rx="560"
+        ry="36"
+        fill="url(#paint0_linear_eliye)"
+        opacity="0.2"
       />
-      <text x="70" y="36" fontSize="2.2em" fontWeight="bold" fill="#ee2677" fontFamily="monospace">E</text>
-      <circle cx="110" cy="23" r="5" fill="#fdba74" />
-      <text x="175" y="46" fontSize="2.2em" fontWeight="bold" fill="#04b67d" fontFamily="monospace">L</text>
-      <circle cx="218" cy="31" r="6" fill="#38bdf8" />
-      <text x="289" y="35" fontSize="2.2em" fontWeight="bold" fill="#facc15" fontFamily="monospace">I</text>
-      <circle cx="340" cy="24" r="4.5" fill="#a3e635" />
-      <text x="420" y="44" fontSize="2.2em" fontWeight="bold" fill="#a5b4fc" fontFamily="monospace">Y</text>
-      <circle cx="485" cy="27" r="5" fill="#f472b6" />
-      <text x="570" y="33" fontSize="2.2em" fontWeight="bold" fill="#04b67d" fontFamily="monospace">E</text>
-      <circle cx="617" cy="37" r="6" fill="#83ffb0" />
-      {/* Accent bulbs further out */}
-      <circle cx="1180" cy="20" r="6" fill="#fdba74" />
-      <circle cx="1250" cy="32" r="4" fill="#ee2677" />
+      {/* Modern zigzag with gradient */}
+      <path
+        d="M30 44 Q 300 2 600 43 Q 930 78 1170 42"
+        stroke="url(#paint1_linear_eliye)"
+        strokeWidth="7"
+        fill="none"
+        opacity="0.13"
+      />
+      {/* Stylized dots for dynamic effect */}
+      <circle cx="105" cy="34" r="6" fill="#0ea5e9" />
+      <circle cx="210" cy="46" r="7" fill="#f59e42" />
+      <circle cx="335" cy="35" r="5" fill="#fb7185" />
+      <circle cx="495" cy="44" r="6" fill="#34d399" />
+      <circle cx="612" cy="53" r="7" fill="#fbbf24" />
+      <circle cx="810" cy="31" r="5" fill="#a78bfa" />
+      <circle cx="970" cy="43" r="6" fill="#38bdf8" />
+      <circle cx="1090" cy="33" r="7" fill="#f472b6" />
+      {/* ELIYE text with new modern style */}
+      <text x="55" y="69" fontSize="2.7em" fontWeight="900" fill="url(#paint2_linear_eliye)" fontFamily="Poppins, sans-serif" letterSpacing="3">E  L  I  Y  E</text>
+      <defs>
+        <linearGradient id="paint0_linear_eliye" x1="0" y1="0" x2="1200" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#dbeafe"/>
+          <stop offset="0.37" stopColor="#fce7f3"/>
+          <stop offset="1" stopColor="#fef3c7"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_eliye" x1="0" y1="0" x2="1200" y2="54" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#38bdf8" />
+          <stop offset="1" stopColor="#f472b6" />
+        </linearGradient>
+        <linearGradient id="paint2_linear_eliye" x1="0" y1="0" x2="500" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#0ea5e9"/>
+          <stop offset="0.5" stopColor="#f59e42"/>
+          <stop offset="1" stopColor="#f472b6"/>
+        </linearGradient>
+      </defs>
     </svg>
   </div>
 );
 
-// Banner designed for e liye
-const EliyeBanner = () => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.95, y: -10 }}
-    animate={{ opacity: 1, scale: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.25 }}
-    className="max-w-xl mx-auto mb-6 text-center relative z-10"
-  >
-    <div className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-sky-50 via-pink-100 to-amber-50 rounded-2xl shadow-xl border border-sky-200/70">
-      <span className="animate-bounce text-2xl">🌟</span>
-      <span className="font-bold text-sky-600 text-base md:text-lg">
-        {[
-          "E Liye: Apni khud ki journey, khud design karo 🚀",
-          "Design socho – Code likho – e liye badho!",
-          "Yahan har course tumhare growth ke liye bana hai.",
-          "Naye design, naye ideas – sab milenge e liye par 😎",
-          "Seekho aur apne sapno ka design banao, E Liye ke sath! ✨"
-        ][Math.floor(Math.random() * 5)]}
-      </span>
-      <span className="animate-bounce text-2xl">🎨</span>
-    </div>
-  </motion.div>
-);
-
-// Custom gradients for e liye
-const eliyeGradients = [
-  "bg-gradient-to-br from-sky-100 via-white to-pink-100",
-  "bg-gradient-to-br from-pink-50 via-white to-violet-100",
-  "bg-gradient-to-br from-lime-50 via-white to-teal-100",
-  "bg-gradient-to-br from-amber-50 via-white to-yellow-100"
+const quotes = [
+  "Design apne tareeke se — E Liye par har ek course unique hai! 🚀",
+  "Create. Collaborate. Conquer. Sab kuch yahan milega ✨",
+  "Apne skills ko ek nayi direction do — Join the E Liye movement!",
+  "Tech aur design: yahan milta hai future ka power-up 😎",
+  "Sapno ko reality mein badlo, start your journey on E Liye! 🎨"
 ];
 
-// Badge styles
+const EliyeBanner = () => {
+  const [quote, setQuote] = useState(quotes[0]);
+  // Change quote on every mount/refresh for liveliness
+  useEffect(() => {
+    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // eslint-disable-next-line
+  }, []);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -16, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.18 }}
+      className="max-w-2xl mx-auto mb-8 z-20"
+    >
+      <div className="bg-white/90 border-2 border-sky-100 rounded-3xl py-5 px-6 shadow-2xl flex items-center justify-center gap-4 relative">
+        <span className="animate-pulse text-3xl">🚀</span>
+        <span className="text-lg md:text-xl font-bold text-gradient bg-gradient-to-r from-cyan-500 via-fuchsia-400 to-yellow-500 bg-clip-text text-transparent">
+          {quote}
+        </span>
+        <span className="animate-spin-slow text-3xl">🌈</span>
+      </div>
+    </motion.div>
+  );
+};
+
+// Sleek glassmorphism gradients for cards
+const eliyeGradients = [
+  "bg-gradient-to-br from-cyan-50/80 via-white/75 to-fuchsia-50/60 backdrop-blur-sm",
+  "bg-gradient-to-br from-yellow-50/70 via-white/75 to-violet-50/60 backdrop-blur-sm",
+  "bg-gradient-to-br from-emerald-50/70 via-white/80 to-cyan-50/75 backdrop-blur-sm",
+  "bg-gradient-to-br from-fuchsia-100/80 via-white/75 to-amber-50/70 backdrop-blur-sm"
+];
+
+// New badge designs
 const eliyeBadges = {
-  Beginner: "bg-sky-400/10 text-sky-600 ring-2 ring-sky-200",
-  Intermediate: "bg-pink-400/10 text-pink-700 ring-2 ring-pink-200",
-  Advanced: "bg-yellow-400/10 text-yellow-700 ring-2 ring-yellow-200",
+  Beginner: "bg-cyan-400/15 text-cyan-600 ring-2 ring-cyan-100",
+  Intermediate: "bg-pink-400/15 text-fuchsia-700 ring-2 ring-pink-100",
+  Advanced: "bg-yellow-400/15 text-yellow-700 ring-2 ring-yellow-100",
 };
 
 const EliyeIcon = () => (
-  <svg className="inline ml-1 -mt-0.5 h-4 w-4 animate-spin-slow text-sky-400 drop-shadow" fill="none" viewBox="0 0 18 18">
+  <svg className="ml-1 inline h-4 w-4 animate-spin-slow text-cyan-400" fill="none" viewBox="0 0 18 18">
     <g>
-      <circle cx="9" cy="9" r="7.5" stroke="#4287f5" strokeWidth="2.2" />
-      <circle cx="9" cy="9" r="2.7" fill="#f472b6" opacity="0.7" />
+      <circle cx="9" cy="9" r="8" stroke="#0ea5e9" strokeWidth="2" />
+      <circle cx="9" cy="9" r="3" fill="#f472b6" opacity="0.7" />
     </g>
   </svg>
 );
@@ -90,36 +121,27 @@ export default function Courses() {
   const [search, setSearch] = useState("");
   const [levelFilter, setLevelFilter] = useState("All");
   const [sortBy, setSortBy] = useState("title");
-
-  // API se laane ke liye states
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Backend se API call
+  // Fetch API
   useEffect(() => {
     setLoading(true);
     setError("");
-    // Yahan pe apne backend ka url daalein, e.g. http://localhost:5000/api/courses ya production url
     fetch("/api/courses")
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("Server error");
-        }
+        if (!res.ok) throw new Error("Server error");
         return res.json();
       })
-      .then((data) => {
-        // API response structure: expect array
-        setCourses(Array.isArray(data) ? data : []);
-      })
-      .catch((err) => {
+      .then((data) => setCourses(Array.isArray(data) ? data : []))
+      .catch(() => {
         setError("Courses laane me dikkat aa gayi 😥");
         setCourses([]);
       })
       .finally(() => setLoading(false));
   }, []);
 
-  // Filtering, sorting logic (same as pehle)
   const filteredCourses = courses
     .filter(
       (course) =>
@@ -137,79 +159,88 @@ export default function Courses() {
       return 0;
     });
 
-  // corners replace with design icons
+  // Corners with floating neon dots
   const leftCorner = (
     <motion.div
-      initial={{ opacity: 0, x: -28, y: -11 }}
+      initial={{ opacity: 0, x: -24, y: -12 }}
       animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration: 1.1, delay: 0.25 }}
-      className="absolute left-1 top-0 text-3xl select-none pointer-events-none"
-    ><span role="img" aria-label="paint palette">🎨</span></motion.div>
+      transition={{ duration: 0.9, delay: 0.18 }}
+      className="absolute left-2 top-0 z-20 pointer-events-none"
+    >
+      <span className="block h-6 w-6 rounded-full bg-cyan-300 shadow-[0_0_18px_0_rgba(6,182,212,0.41)] animate-pulse"></span>
+    </motion.div>
   );
   const rightCorner = (
     <motion.div
-      initial={{ opacity: 0, x: 26, y: -11 }}
+      initial={{ opacity: 0, x: 24, y: -12 }}
       animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration: 1.2, delay: 0.29 }}
-      className="absolute right-1 top-0 text-3xl select-none pointer-events-none"
-    ><span role="img" aria-label="bulb">💡</span></motion.div>
+      transition={{ duration: 0.9, delay: 0.22 }}
+      className="absolute right-2 top-0 z-20 pointer-events-none"
+    >
+      <span className="block h-6 w-6 rounded-full bg-pink-300 shadow-[0_0_18px_0_rgba(244,114,182,0.28)] animate-pulse"></span>
+    </motion.div>
   );
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-tl from-sky-50 via-pink-50 to-white px-4 py-8">
+    <div className="relative min-h-screen bg-gradient-to-tr from-cyan-50 via-amber-50 to-white px-3 py-10 overflow-x-clip">
 
-      {/* Top: e liye strip */}
+      {/* Top hero/strip */}
       <EliyeStrip />
 
-      {/* Header (e liye style) */}
+      {/* Header (Bold, layered, with gradient drop shadow) */}
       <motion.div
-        initial={{ opacity: 0, y: -28 }}
+        initial={{ opacity: 0, y: -32 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="mb-5 flex flex-col items-center gap-1"
+        transition={{ duration: 0.65 }}
+        className="flex flex-col items-center mb-6"
       >
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-pink-500 to-amber-500 drop-shadow-lg text-center">
-          🖌️ e liye design karo, future banawo!
+        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-transparent bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-yellow-500 bg-clip-text shadow-lg text-center drop-shadow-[0_8px_28px_rgba(34,211,238,0.10)]">
+          <span className="inline-block align-middle">E Liye Courses</span>
         </h1>
-        <p className="text-base mt-1 max-w-xl text-center text-gray-500">
-          Har course me design aur tech ka perfect blend. Apna creative side jagao!
+        <p className="mt-2 text-lg md:text-xl max-w-2xl text-center text-gray-500 font-medium bg-white/80 px-4 py-2 rounded-xl shadow-sm">
+          Explore creativity aur technology ka fusion. Har course, ek nayi learning journey! 🚀
         </p>
       </motion.div>
 
-      {/* Fun e liye banner */}
+      {/* Fun, new quotable banner */}
       <EliyeBanner />
 
-      {/* Filter/Sort Bar */}
+      {/* Modern filter + sort bar, with glassy look */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.55, delay: 0.11 }}
-        className="bg-white rounded-xl shadow-lg p-4 flex flex-col md:flex-row justify-between items-center gap-4 mb-10 border border-sky-50 hover:border-pink-200 transition-all"
+        transition={{ duration: 0.5, delay: 0.12 }}
+        className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12 bg-gradient-to-r from-cyan-100/60 via-white/50 to-fuchsia-100/60 border border-cyan-100 rounded-2xl shadow-lg px-4 py-5 backdrop-blur"
       >
-        <div className="w-full md:w-1/2 flex gap-2">
+        <div className="w-full md:w-1/2 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+          <label className="sr-only" htmlFor="eliye-search">Search Courses</label>
           <input
+            id="eliye-search"
             type="text"
-            placeholder="🎨 Search e liye course..."
+            autoComplete="off"
+            placeholder="🔍 Kya seekhna hai? Search yahan..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 p-3 rounded-lg bg-sky-50 border border-gray-200 focus:ring-2 focus:ring-pink-100 outline-none transition"
+            className="flex-1 p-3 rounded-xl bg-white/85 border border-gray-300 shadow-inner placeholder:text-gray-400 focus:ring-2 focus:ring-pink-200 outline-none transition text-lg"
           />
           <select
             value={levelFilter}
             onChange={(e) => setLevelFilter(e.target.value)}
-            className="p-3 rounded-lg border border-gray-200 bg-white shadow-inner focus:ring-2 focus:ring-sky-100"
+            className="p-2.5 rounded-xl border border-gray-200 bg-white/90 shadow-inner focus:ring-2 focus:ring-cyan-100 text-base font-semibold text-cyan-700"
+            aria-label="Level Filter"
           >
-            <option value="All">Sare levels</option>
+            <option value="All">All Levels</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
           </select>
         </div>
         <div className="flex gap-2 items-center w-full md:w-auto">
-          <span className="font-medium text-sm text-pink-600">Sort:</span>
+          <span className="font-semibold text-sm text-pink-500">Sort by</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="p-2 rounded-lg border border-gray-200 bg-white focus:ring-2 focus:ring-pink-100"
+            className="p-2 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-yellow-100 text-base"
           >
             <option value="title">Name</option>
             <option value="rating">Rating</option>
@@ -218,151 +249,168 @@ export default function Courses() {
         </div>
       </motion.div>
 
-      {/* Loading/ Error Handling */}
-      {loading ? (
-        <div className="flex justify-center py-12">
-          <div className="text-pink-400 font-bold flex items-center gap-3 text-lg">
-            <span className="animate-bounce">⏳</span>Kourses load ho rahe hain...
-          </div>
-        </div>
-      ) : error ? (
-        <div className="flex justify-center py-12">
-          <div className="text-red-500 font-semibold flex items-center gap-2">
-            <span className="text-2xl">🚫</span> {error}
-          </div>
-        </div>
-      ) : (
+      {/* Loading/ Error */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="flex justify-center py-16"
+          >
+            <div className="text-lg flex items-center gap-2 text-fuchsia-500 font-bold">
+              <span className="animate-spin-slow text-3xl">🌀</span>Courses loading...
+            </div>
+          </motion.div>
+        )}
+        {!loading && error && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="flex justify-center py-16"
+          >
+            <div className="text-red-500 font-bold flex items-center gap-2 text-lg">
+              <span className="text-2xl">🚫</span>
+              {error}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* MAIN COURSE GRID */}
+      { !loading && !error && (
         <>
-          {/* Grid: Design-themed corners */}
           <div style={{ minHeight: 0, position: "relative" }}>
             {leftCorner}
             {rightCorner}
           </div>
-          {/* Course List (tilt, but e-liye design) */}
           <motion.div
             layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10"
           >
-            {filteredCourses.length > 0 ? (
-              filteredCourses.map((course, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.016,
-                    rotate: course.featured ? 0.5 : 0,
-                    boxShadow: "0 7px 18px 0 rgba(52, 146, 242, 0.08)"
-                  }}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: "spring", stiffness: 115, delay: idx * 0.05 }}
-                  className={`relative rounded-[2rem] border border-pink-100 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.018] focus-within:ring-2 focus-within:ring-sky-200 ${eliyeGradients[idx % eliyeGradients.length]}`}
-                >
-                  {/* 🌟 Featured for e liye  */}
-                  {course.featured && (
-                    <motion.div
-                      initial={{ scale: 0, rotate: 16 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.21 }}
-                      className="absolute -top-2 left-2 z-20 bg-gradient-to-tr from-sky-200 via-amber-100 to-pink-100 text-pink-700 font-black px-3 py-0.5 rounded-2xl text-xs shadow ring-2 ring-amber-100 animate-pulse"
-                    >
-                      <span role="img" aria-label="Featured">👑 e liye</span>
-                    </motion.div>
-                  )}
-
-                  {/* Rating and badge */}
-                  <div className="absolute top-3 left-3 flex items-center gap-2 z-10">
-                    <div className="flex items-center bg-white/90 px-2 py-1 rounded-full shadow text-xs font-semibold text-sky-500 gap-1">
-                      <svg
-                        className="inline w-4 h-4 text-amber-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.377 2.455a1 1 0 00-.364 1.118l1.287 3.972c.302.93-.755 1.688-1.54 1.119l-3.376-2.454a1 1 0 00-1.176 0L5.6 15.066c-.785.569-1.842-.189-1.54-1.12l1.285-3.971A1 1 0 005 8.977l-3.378-2.455c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.689l1.286-3.97z" />
-                      </svg>
-                      {course.rating}
-                    </div>
-                  </div>
-                  <span
-                    className={`absolute top-3 right-3 z-10 text-xs px-3 py-1 rounded-full font-bold drop-shadow-md ring-2 ${
-                      eliyeBadges[course.level] || "bg-sky-100 ring-sky-200"
-                    }`}
-                  >
-                    {course.level}
-                  </span>
-
-                  {/* Course logo/image */}
+            <AnimatePresence>
+              {filteredCourses.length > 0 ? (
+                filteredCourses.map((course, idx) => (
                   <motion.div
-                    initial={{ scale: 0.93 }}
-                    animate={{ scale: 1 }}
-                    className="flex justify-center items-center bg-white/60 py-8 px-2 h-32"
+                    key={idx}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.016,
+                      rotate: course.featured ? 0.5 : 0,
+                      boxShadow: "0 7px 18px 0 rgba(52, 146, 242, 0.08)"
+                    }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 115, delay: idx * 0.05 }}
+                    className={`relative rounded-[2rem] border border-pink-100 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.018] focus-within:ring-2 focus-within:ring-sky-200 ${eliyeGradients[idx % eliyeGradients.length]}`}
                   >
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="h-14 w-14 object-contain filter drop-shadow"
-                      style={{ filter: course.featured ? "drop-shadow(0px 0px 8px #f472b6)" : undefined }}
-                    />
-                  </motion.div>
-
-                  {/* Floating accent if featured */}
-                  {course.featured && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.41 }}
-                      className="absolute right-5 top-11 text-pink-400 text-lg animate-pulse"
-                    >✨</motion.div>
-                  )}
-
-                  {/* Course content */}
-                  <div className="p-6 flex flex-col gap-2">
-                    <h2 className="text-xl font-extrabold text-sky-900 mb-1 flex items-center gap-2">
-                      {course.title}
-                    </h2>
-                    <p className="text-gray-600 mb-1 text-sm line-clamp-2 italic">
-                      {course.description || "Creative skills for digital future, e liye."}
-                    </p>
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 mt-1">
-                      <span>👩‍🎨 {course.instructor}</span>
-                      <span>⏱ {course.duration}</span>
-                    </div>
-                    <div className="flex justify-between items-center mt-4">
-                      <span className="text-xl font-bold text-pink-600">{course.price}</span>
-                      <motion.button
-                        whileTap={{ scale: 0.96 }}
-                        whileHover={{ scale: 1.09 }}
-                        onClick={() =>
-                          window.confirm(`Enroll karein "${course.title}" me?`) &&
-                          alert(`🎉 Mubarak! Aap enroll ho gaye: ${course.title}`)
-                        }
-                        className={`bg-gradient-to-r from-sky-400 to-pink-400 px-5 py-2 rounded-lg font-bold text-white uppercase tracking-wide shadow hover:from-pink-400 hover:to-sky-400 transition flex items-center gap-1 ${
-                          course.featured ? "ring-4 ring-amber-100" : ""
-                        }`}
+                    {/* 🌟 Featured for e liye  */}
+                    {course.featured && (
+                      <motion.div
+                        initial={{ scale: 0, rotate: 16 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.21 }}
+                        className="absolute -top-2 left-2 z-20 bg-gradient-to-tr from-sky-200 via-amber-100 to-pink-100 text-pink-700 font-black px-3 py-0.5 rounded-2xl text-xs shadow ring-2 ring-amber-100 animate-pulse"
                       >
-                        e liye Enroll
-                        <EliyeIcon />
-                      </motion.button>
+                        <span role="img" aria-label="Featured">👑 e liye</span>
+                      </motion.div>
+                    )}
+
+                    {/* Rating and badge */}
+                    <div className="absolute top-3 left-3 flex items-center gap-2 z-10">
+                      <div className="flex items-center bg-white/90 px-2 py-1 rounded-full shadow text-xs font-semibold text-sky-500 gap-1">
+                        <svg
+                          className="inline w-4 h-4 text-amber-400"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.377 2.455a1 1 0 00-.364 1.118l1.287 3.972c.302.93-.755 1.688-1.54 1.119l-3.376-2.454a1 1 0 00-1.176 0L5.6 15.066c-.785.569-1.842-.189-1.54-1.12l1.285-3.971A1 1 0 005 8.977l-3.378-2.455c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.689l1.286-3.97z" />
+                        </svg>
+                        {course.rating}
+                      </div>
                     </div>
-                  </div>
+                    <span
+                      className={`absolute top-3 right-3 z-10 text-xs px-3 py-1 rounded-full font-bold drop-shadow-md ring-2 ${
+                        eliyeBadges[course.level] || "bg-sky-100 ring-sky-200"
+                      }`}
+                    >
+                      {course.level}
+                    </span>
+
+                    {/* Course logo/image */}
+                    <motion.div
+                      initial={{ scale: 0.93 }}
+                      animate={{ scale: 1 }}
+                      className="flex justify-center items-center bg-white/60 py-8 px-2 h-32"
+                    >
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        className="h-14 w-14 object-contain filter drop-shadow"
+                        style={{ filter: course.featured ? "drop-shadow(0px 0px 8px #f472b6)" : undefined }}
+                      />
+                    </motion.div>
+
+                    {/* Floating accent if featured */}
+                    {course.featured && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.41 }}
+                        className="absolute right-5 top-11 text-pink-400 text-lg animate-pulse"
+                      >✨</motion.div>
+                    )}
+
+                    {/* Course content */}
+                    <div className="p-6 flex flex-col gap-2">
+                      <h2 className="text-xl font-extrabold text-sky-900 mb-1 flex items-center gap-2">
+                        {course.title}
+                      </h2>
+                      <p className="text-gray-600 mb-1 text-sm line-clamp-2 italic">
+                        {course.description || "Creative skills for digital future, e liye."}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 mt-1">
+                        <span>👩‍🎨 {course.instructor}</span>
+                        <span>⏱ {course.duration}</span>
+                      </div>
+                      <div className="flex justify-between items-center mt-4">
+                        <span className="text-xl font-bold text-pink-600">{course.price}</span>
+                        <motion.button
+                          whileTap={{ scale: 0.96 }}
+                          whileHover={{ scale: 1.09 }}
+                          onClick={() =>
+                            window.confirm(`Enroll karein "${course.title}" me?`) &&
+                            alert(`🎉 Mubarak! Aap enroll ho gaye: ${course.title}`)
+                          }
+                          className={`bg-gradient-to-r from-sky-400 to-pink-400 px-5 py-2 rounded-lg font-bold text-white uppercase tracking-wide shadow hover:from-pink-400 hover:to-sky-400 transition flex items-center gap-1 ${
+                            course.featured ? "ring-4 ring-amber-100" : ""
+                          }`}
+                        >
+                          e liye Enroll
+                          <EliyeIcon />
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))
+              ) : (
+                <motion.div
+                  className="col-span-full flex flex-col items-center py-12"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png"
+                    alt="No results"
+                    className="h-24 mb-4 opacity-60"
+                  />
+                  <p className="text-lg text-gray-500 font-medium">
+                    Koi course nahi mila, try dusra search 😅
+                  </p>
                 </motion.div>
-              ))
-            ) : (
-              <motion.div
-                className="col-span-full flex flex-col items-center py-12"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png"
-                  alt="No results"
-                  className="h-24 mb-4 opacity-60"
-                />
-                <p className="text-lg text-gray-500 font-medium">
-                  Koi course nahi mila, try dusra search 😅
-                </p>
-              </motion.div>
-            )}
+              )}
+            </AnimatePresence>
           </motion.div>
         </>
       )}

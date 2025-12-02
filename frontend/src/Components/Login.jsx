@@ -39,10 +39,25 @@ export default function Login() {
 
     try {
       setLoading(true);
-      // simulate API delay
+      // Simulate API call - In production, replace with actual API call
       await new Promise((r) => setTimeout(r, 1100));
+
+      // Mock successful login - store token
+      const mockToken = "demo_token_" + Date.now();
+      localStorage.setItem('token', mockToken);
+      localStorage.setItem('user', JSON.stringify({
+        name: "Aditya Gupta",
+        email: formData.email,
+        role: "student"
+      }));
+
       setSuccess("Welcome back! 🙌");
-      setFormData({ email: "", password: "" });
+
+      // Redirect to dashboard after 500ms
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 500);
+
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -69,7 +84,7 @@ export default function Login() {
         <div className="pt-10 pb-8 px-6 md:px-14 flex flex-col items-center">
           <div className="mb-8 flex flex-col items-center">
             <span className="text-[2.7rem] mb-2 animate-bounce" aria-label="Lock">
-              <svg width="46" height="46" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#6366F1" opacity="0.11"/><rect x="14" y="22" width="20" height="14" rx="3" fill="#8b5cf6"/><rect x="18" y="14" width="12" height="12" rx="6" fill="#6366f1"/><rect x="21.75" y="28" width="4.5" height="7" rx="2.25" fill="#ede9fe" stroke="#8b5cf6" strokeWidth="1.3"/></svg>
+              <svg width="46" height="46" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#6366F1" opacity="0.11" /><rect x="14" y="22" width="20" height="14" rx="3" fill="#8b5cf6" /><rect x="18" y="14" width="12" height="12" rx="6" fill="#6366f1" /><rect x="21.75" y="28" width="4.5" height="7" rx="2.25" fill="#ede9fe" stroke="#8b5cf6" strokeWidth="1.3" /></svg>
             </span>
             <h2 className="text-3xl font-extrabold text-indigo-700 drop-shadow-sm tracking-tight mb-1">
               Welcome Back!
@@ -109,7 +124,7 @@ export default function Login() {
               </label>
               <div className="relative w-full">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-300 text-xl">
-                  <svg width="19" height="19" fill="none"><path d="M2 5.5v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" stroke="#6366f1" strokeWidth="1.4"/><path d="M2.5 5.5 9.5 10.5l7-5" stroke="#6366f1" strokeWidth="1.4"/></svg>
+                  <svg width="19" height="19" fill="none"><path d="M2 5.5v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" stroke="#6366f1" strokeWidth="1.4" /><path d="M2.5 5.5 9.5 10.5l7-5" stroke="#6366f1" strokeWidth="1.4" /></svg>
                 </span>
                 <input
                   type="email"
@@ -128,7 +143,7 @@ export default function Login() {
               </label>
               <div className="relative w-full">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-300 text-xl">
-                  <svg width="18" height="18" fill="none"><rect x="3" y="7" width="12" height="8" rx="2" stroke="#6366f1" strokeWidth="1.3"/><path d="M6 7V5a3 3 0 1 1 6 0v2" stroke="#6366f1" strokeWidth="1.3"/><circle cx="9" cy="11" r="1.4" fill="#6366f1"/></svg>
+                  <svg width="18" height="18" fill="none"><rect x="3" y="7" width="12" height="8" rx="2" stroke="#6366f1" strokeWidth="1.3" /><path d="M6 7V5a3 3 0 1 1 6 0v2" stroke="#6366f1" strokeWidth="1.3" /><circle cx="9" cy="11" r="1.4" fill="#6366f1" /></svg>
                 </span>
                 <input
                   type="password"
@@ -145,13 +160,12 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-2.5 rounded-2xl font-bold shadow-md bg-gradient-to-r from-indigo-500 to-pink-400 hover:from-indigo-600 hover:to-pink-500 text-white text-lg tracking-wide uppercase transition disabled:opacity-60 ${
-                loading ? "animate-pulse" : ""
-              }`}
+              className={`w-full py-2.5 rounded-2xl font-bold shadow-md bg-gradient-to-r from-indigo-500 to-pink-400 hover:from-indigo-600 hover:to-pink-500 text-white text-lg tracking-wide uppercase transition disabled:opacity-60 ${loading ? "animate-pulse" : ""
+                }`}
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin" width="20" height="20" fill="none"><circle cx="10" cy="10" r="8" stroke="#fff" strokeOpacity=".3" strokeWidth="3"/><path d="M18 10a8 8 0 0 1-8 8" stroke="#fff" strokeWidth="3" strokeLinecap="round"/></svg>
+                  <svg className="animate-spin" width="20" height="20" fill="none"><circle cx="10" cy="10" r="8" stroke="#fff" strokeOpacity=".3" strokeWidth="3" /><path d="M18 10a8 8 0 0 1-8 8" stroke="#fff" strokeWidth="3" strokeLinecap="round" /></svg>
                   Signing in...
                 </span>
               ) : (
@@ -169,7 +183,7 @@ export default function Login() {
               className="text-sm text-indigo-500 font-medium hover:underline hover:text-pink-500 transition flex items-center gap-1"
               tabIndex={0}
             >
-              <svg width="16" height="16" fill="none" className="inline-block"><path d="M8 1.5a6.5 6.5 0 1 1 0 13A6.5 6.5 0 0 1 8 1.5Zm.01 7.4v-2m0 5.18h.005" stroke="#6366f1" strokeWidth="1.3" strokeLinecap="round"/></svg>
+              <svg width="16" height="16" fill="none" className="inline-block"><path d="M8 1.5a6.5 6.5 0 1 1 0 13A6.5 6.5 0 0 1 8 1.5Zm.01 7.4v-2m0 5.18h.005" stroke="#6366f1" strokeWidth="1.3" strokeLinecap="round" /></svg>
               Forgot password?
             </a>
             <span className="py-2 hidden md:inline text-[11px] text-gray-300">|</span>

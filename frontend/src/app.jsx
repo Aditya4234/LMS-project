@@ -16,28 +16,23 @@ import Profile from "./Pages/Profile.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
 import Sidebar from "./Components/Sidebar.jsx";
+import QuickActions from "./Components/QuickActions.jsx";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Yeh bhi
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
-  // Remove green color from background, replace it with blue/gray tone
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex bg-blue-50/90">
+      <div className="min-h-screen bg-gray-50 dark:bg-[#151625] transition-colors duration-300">
         {/* Sidebar */}
         <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
 
         {/* Main content area */}
-        <div
-          className={`flex-1 min-h-screen flex flex-col transition-all duration-300 ease-in-out ${
-            sidebarOpen ? "ml-64" : "ml-0"
-          }`}
-        >
+        <div className="lg:pl-64 min-h-screen flex flex-col transition-all duration-300">
           <Header onOpenSidebar={toggleSidebar} />
-          <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
@@ -56,6 +51,9 @@ export default function App() {
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
+
+          {/* Quick Actions FAB */}
+          <QuickActions />
         </div>
       </div>
     </BrowserRouter>
